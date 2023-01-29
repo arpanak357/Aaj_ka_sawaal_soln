@@ -1,0 +1,61 @@
+// https://leetcode.com/problems/rotate-image/
+class Solution {
+    public void rotate(int[][]a) 
+    {
+        int i,j,k,t;
+        int n=a[0].length;
+        for(i=0;i<n;i++)
+        {
+            for(j=i+1;j<n;j++)
+            {
+                t=a[i][j];
+                a[i][j]=a[j][i];
+                a[j][i]=t;
+            }
+        }
+        
+        for(i=0,k=n-1;i<n/2;i++,k--)
+        {
+            for(j=0;j<n;j++)
+            {
+                t=a[j][i];
+                a[j][i]=a[j][k];
+                a[j][k]=t;
+            }
+        }
+        
+        System.out.print("[");
+        for(i=0;i<n;i++)
+        {   System.out.print("[");
+            for(j=0;j<n;j++)
+            {
+                if(j==n-1)  
+                 System.out.print(a[i][j]);
+                else
+                System.out.print(a[i][j]+","); 
+               
+            }     
+            System.out.print("]");
+            if(i!=n-1)
+            System.out.print(",");   
+        }
+        System.out.print("]");
+        
+    }
+     public static void main(String args[])
+    {
+      Scanner sc=new Scanner(System.in);
+      int n=sc.nextInt();
+      int a[][]=new int[n][n];
+      
+      int i,k;
+      for(i=0;i<n;i++)
+      {
+          for(k=0;k<n;k++)
+             a[i][k]=sc.nextInt(); 
+      }
+     Solution ob=new Solution();
+     ob.rotate(a);
+    }
+}
+Console
