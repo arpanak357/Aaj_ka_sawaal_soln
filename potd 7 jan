@@ -1,0 +1,121 @@
+ task 1: https://bit.ly/3KcpHcB
+ did it on 2023-01-30
+ 
+ Solution:
+ 
+ //{ Driver Code Starts
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class gfg
+{
+    
+    public static void main(String args[])throws IOException
+    {
+        BufferedReader read = new BufferedReader(new InputStreamReader(System.in));
+        int t = Integer.parseInt(read.readLine());
+        
+        while(t-- > 0)
+        {
+            String s[] = read.readLine().trim().split("\\s+");
+            
+            int n = Integer.parseInt(s[0]);
+            int k = Integer.parseInt(s[1]);
+            
+            int arr[] = new int[n];
+            
+            String st[] = read.readLine().trim().split("\\s+");
+            
+            for(int i = 0; i < n; i++)
+            {
+                arr[i] = Integer.parseInt(st[i]);
+            }
+            
+            Solution obj = new Solution();
+            
+            System.out.println(obj.searchInSorted(arr, n, k));
+        }
+    }
+}
+// } Driver Code Ends
+
+
+class Solution{
+    static int searchInSorted(int arr[], int N, int K)
+    {
+        
+        // Your code here
+        int s=0;
+        N--;
+        while(s<=N)
+        {
+            int mid=s+(N-s)/2;
+            if(arr[mid]==K)
+              return 1;
+            else if(arr[mid]<K)
+              s=mid+1;
+            else
+              N=mid-1;
+        }
+        
+        return -1;
+    }
+}
+
+
+
+task 2:  https://bit.ly/3A2pKTh
+did it on 2023-01-08
+ 
+Solution: 
+ //{ Driver Code Starts
+//Initial Template for Java
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void main(String[] args) throws IOException
+	{
+	        BufferedReader br =
+            new BufferedReader(new InputStreamReader(System.in));
+        int t =
+            Integer.parseInt(br.readLine().trim()); // Inputting the testcases
+        while(t-->0)
+        {
+            int n = Integer.parseInt(br.readLine().trim());
+            int a[] = new int[n+5];
+            String inputLine[] = br.readLine().trim().split(" ");
+            for (int i = 0; i < n-1; i++) {
+                a[i] = Integer.parseInt(inputLine[i]);
+            }
+            
+            Compute obj = new Compute();
+            System.out.println(obj.missingNumber(a, n));
+            
+        }
+	}
+}
+
+
+// } Driver Code Ends
+
+
+//User function Template for Java
+
+
+class Compute {
+    
+    public static int missingNumber(int A[], int N)
+    {
+        int sum=N*(N+1)/2;
+         // Your code goes here
+         for(int j=0;j<N;j++)
+              sum-=A[j];
+             
+         return sum;
+    }     
+}
+ 
